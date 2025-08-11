@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10AI - منصة إدارة واكتشاف المنتجات الذكية</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="fonts/saudi-font.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+<body>
+    <!-- Hero Header -->
+    <header class="hero-header">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-logo">
+                <h1>10AI</h1>
+                <p>منصة إدارة واكتشاف المنتجات الذكية</p>
+            </div>
+        </div>
+        
+        <!-- Floating Navigation -->
+        <nav class="floating-nav">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <span class="brand-text">10AI</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#" class="nav-link" data-section="add-product">إضافة منتج</a></li>
+                    <li><a href="#" class="nav-link" data-section="products-list">المنتجات</a></li>
+                    <li><a href="#" class="nav-link" data-section="seasonal-products">المواسم قريبا </a></li>
+
+                </ul>
+                <div class="user-info" id="user-info" style="display: none;">
+                    <span class="username" id="username"></span>
+                    <button class="logout-btn" id="logout-btn">تسجيل الخروج</button>
+                </div>
+                <div class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section id="hero-section" class="hero-section">
+            <div class="hero-text">
+                <h2>اكتشف المنتجات الذكية</h2>
+                <p>منصة متطورة لإدارة واكتشاف المنتجات بذكاء اصطناعي</p>
+                <button class="cta-button" onclick="showSection('add-product')"><i class="fas fa-rocket"></i> ابدأ الآن</button>
+            </div>
+        </section>
+        
+        <!-- Add Product Section -->
+        <div id="add-product" class="content-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>إضافة منتج جديد</h2>
+                    <p>أدخل رابط المنتج وسنقوم بجلب المعلومات تلقائياً باستخدام الذكاء الاصطناعي</p>
+                </div>
+                
+                <div class="form-container">
+                    <div class="input-section">
+                        <label for="product-url" class="modern-label">رابط المنتج</label>
+                        <div class="modern-input-group">
+                            <input type="url" id="product-url" class="modern-input" placeholder="https://example.com/product" required>
+                            <button id="fetch-product" class="modern-btn primary">
+                                <i class="fas fa-magic"></i>
+                                جلب المعلومات
+                            </button>
+                        </div>
+                        
+                        <!-- Supported Websites Section -->
+                        <div class="supported-websites">
+                            <h4 class="supported-title">المواقع المدعومة:</h4>
+                            <div class="websites-grid">
+
+                                <a href="https://ebay.com" target="_blank" class="website-item">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    <span>eBay</span>
+                                </a>
+                                <a href="https://etsy.com" target="_blank" class="website-item">
+                                    <i class="fas fa-heart"></i>
+                                    <span>Etsy</span>
+                                </a>
+
+                                <a href="https://salla.sa" target="_blank" class="website-item">
+                                    <i class="fas fa-shopping-bag"></i>
+                                    <span>Salla</span>
+                                </a>
+                                <a href="https://zid.sa" target="_blank" class="website-item">
+                                    <i class="fas fa-store-alt"></i>
+                                    <span>Zid</span>
+                                </a>
+                                <a href="#" class="website-item">
+                                    <i class="fas fa-plus"></i>
+                                    <span>أي موقع</span>
+                                </a>
+                            </div>
+                            <div class="contact-developer">
+                                <p><i class="fas fa-plus-circle"></i> لإضافة مواقع إضافية، تواصل مع فريق <strong>10AI</strong></p>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <div id="product-preview" class="product-preview-modern" style="display: none;">
+                        <div class="preview-card">
+                            <div class="preview-images-container">
+                                <div class="images-gallery">
+                                    <img id="preview-img-1" src="" alt="صورة المنتج 1" class="preview-image active">
+                                    <img id="preview-img-2" src="" alt="صورة المنتج 2" class="preview-image">
+                                    <img id="preview-img-3" src="" alt="صورة المنتج 3" class="preview-image">
+                                    <img id="preview-img-4" src="" alt="صورة المنتج 4" class="preview-image">
+                                    <img id="preview-img-5" src="" alt="صورة المنتج 5" class="preview-image">
+                                </div>
+                                <div class="image-indicators">
+                                    <span class="indicator active" data-image="1"></span>
+                                    <span class="indicator" data-image="2"></span>
+                                    <span class="indicator" data-image="3"></span>
+                                    <span class="indicator" data-image="4"></span>
+                                    <span class="indicator" data-image="5"></span>
+                                </div>
+                            </div>
+                            <div class="preview-content">
+                                <div class="input-group">
+                                    <label for="product-name" class="modern-label">اسم المنتج</label>
+                                    <input type="text" id="product-name" class="modern-input" placeholder="اسم المنتج" required>
+                                </div>
+                                <div class="input-group">
+                                    <label for="product-price" class="modern-label">سعر المنتج</label>
+                                    <div class="price-input-group">
+                                        <input type="number" id="product-price" class="modern-input price-input" placeholder="0" min="0" step="1">
+                                        <select id="product-currency" class="currency-select" required>
+                            <option value="SAR">ريال سعودي (SAR)</option>
+                            <option value="AED">درهم إماراتي (AED)</option>
+                            <option value="KWD">دينار كويتي (KWD)</option>
+                            <option value="QAR">ريال قطري (QAR)</option>
+                            <option value="USD">دولار أمريكي (USD)</option>
+                            <option value="EUR">يورو (EUR)</option>
+                            <option value="GBP">جنيه إسترليني (GBP)</option>
+                        </select>
+                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="product-description" class="modern-label">وصف المنتج</label>
+                                    <div class="description-container">
+                                        <textarea id="product-description" class="modern-input" placeholder="وصف المنتج" rows="5" required></textarea>
+                                        <div class="description-actions">
+                                            <button type="button" id="regenerate-description" class="description-btn" title="إعادة توليد الوصف">
+                                                <i class="fas fa-sync-alt"></i>
+                                                إعادة توليد
+                                            </button>
+                                            <button type="button" id="summarize-description" class="description-btn" title="تلخيص الوصف">
+                                                <i class="fas fa-compress-alt"></i>
+                                                تلخيص
+                                            </button>
+                                            <button type="button" id="enhance-description" class="description-btn" title="تحسين الوصف">
+                                                <i class="fas fa-magic"></i>
+                                                تحسين
+                                            </button>
+                                            <button type="button" id="translate-description" class="description-btn" title="ترجمة للإنجليزية">
+                                                <i class="fas fa-language"></i>
+                                                ترجمة
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button id="add-product-btn" class="modern-btn success">
+                                    <i class="fas fa-save"></i>
+                                    حفظ المنتج
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products List Section -->
+        <div id="products-list" class="content-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>المنتجات المحفوظة</h2>
+                    <p>إدارة وتصفية المنتجات المضافة مع إمكانية التحكم في حالة الموافقة</p>
+                </div>
+                
+                <div class="filter-section-modern">
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-filter="pending">
+                            <i class="fas fa-clock"></i>
+                            في الانتظار
+                        </button>
+                        <button class="filter-tab" data-filter="approved">
+                            <i class="fas fa-check-circle"></i>
+                            معتمد
+                        </button>
+                        <button class="filter-tab" data-filter="disapproved">
+                            <i class="fas fa-times-circle"></i>
+                            غير معتمد
+                        </button>
+                    </div>
+                    <div class="season-change-section">
+                        <button id="delete-all-products-btn" class="modern-btn danger">
+                            <i class="fas fa-trash-alt"></i>
+                            حذف جميع المنتجات
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="products-grid" class="modern-grid">
+                    <!-- Products will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Seasonal Products Section -->
+        <div id="seasonal-products" class="content-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>المنتجات الموسمية</h2>
+                    <p>تنظيم المنتجات حسب المواسم والمناسبات الخاصة</p>
+                </div>
+                
+                <div class="season-controls-modern">
+                    <div class="season-selector">
+                        <select id="season-select" class="modern-select">
+                            <option value="all">جميع المواسم</option>
+                        </select>
+                        <button id="add-season-btn" class="modern-btn secondary">
+                            <i class="fas fa-plus"></i>
+                            إضافة موسم جديد
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Season Management Section -->
+                <div class="season-management">
+                    <h3>إدارة المواسم</h3>
+                    <div id="seasons-list" class="seasons-list">
+                        <!-- Seasons will be loaded here -->
+                    </div>
+                </div>
+                
+                <div id="seasonal-products-grid" class="modern-grid">
+                    <!-- Seasonal products will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+
+    <!-- Modals -->
+    <div id="season-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>إضافة موسم جديد</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="season-name">اسم الموسم</label>
+                    <input type="text" id="season-name" placeholder="مثال: يوم التأسيس">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-primary" onclick="saveSeason()"><i class="fas fa-save"></i> حفظ الموسم</button>
+                    <button type="button" class="btn-secondary" onclick="document.getElementById('season-modal').style.display='none'"><i class="fas fa-times"></i> إلغاء</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Season Modal -->
+    <div id="edit-season-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>تعديل اسم الموسم</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="edit-season-name">اسم الموسم الجديد</label>
+                    <input type="text" id="edit-season-name" placeholder="أدخل الاسم الجديد">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-primary" onclick="saveEditedSeason()"><i class="fas fa-edit"></i> حفظ التعديل</button>
+                    <button type="button" class="btn-secondary" onclick="document.getElementById('edit-season-modal').style.display='none'"><i class="fas fa-times"></i> إلغاء</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
